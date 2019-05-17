@@ -30,13 +30,34 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @Configuration
 @EnableAuthorizationServer
 public class OAuth2ServerConfigurer extends AuthorizationServerConfigurerAdapter {
+
+	
+	/**
+	 * 
+	 * =======可选配置=========
+	 * 
+	 * 资源服务器与认证服务器分离时
+	 * 例如资源服务器 ResourceServerTokenServices 的  RemoteTokenServices 实现类时
+	 * 需要授权资源服务器权限：http://localhost:8888/oauth/check_token
+	 */
 	@Override
-    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        clients.inMemory() // 使用in-memory存储
-                .withClient("client") // client_id
-                .secret("secret") // client_secret
-                .authorizedGrantTypes("authorization_code") // 该client允许的授权类型
-                .scopes("app"); // 允许的授权范围
-    }
+	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+		security.tokenKeyAccess("permitAll()").checkTokenAccess("isAuthenticated()");
+		
+	}
+	
+	
+	
+	@Override
+	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+		clients.inMemory() // 使用in-memory存储
+				.withClient("client") // client_id
+				.secret("secret") // client_secret
+				.authorizedGrantTypes("authorization_code") // 该client允许的授权类型
+				// .autoApprove(true) //登录后绕过批准询问(/oauth/confirm_access)
+				.scopes("app"); // 允许的授权范围
+
+	}
+	
 
 }
