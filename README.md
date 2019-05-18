@@ -2,6 +2,7 @@
 OAuth2_Demo示例
 
 引用博文：https://blog.csdn.net/neosmith/article/details/52539927#
+
 spring security官网：https://docs.spring.io/spring-security/site/docs/5.0.7.BUILD-SNAPSHOT/reference/htmlsingle/
 
 ### 认证中心：oauth2
