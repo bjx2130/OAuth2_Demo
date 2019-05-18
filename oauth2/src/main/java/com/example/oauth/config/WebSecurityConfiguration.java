@@ -22,12 +22,12 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		// 在spring5.0之后，springsecurity存储密码的格式发生了改变
 		// 官方文档
 		// https://docs.spring.io/spring-security/site/docs/5.0.7.BUILD-SNAPSHOT/reference/htmlsingle/
 		auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).withUser("admin")
 				.password(new BCryptPasswordEncoder().encode("111")).roles("USER").and().withUser("admin2")
 				.password(new BCryptPasswordEncoder().encode("222")).roles("ADMIN");
-	}
+    }
 }
