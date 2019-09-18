@@ -41,3 +41,4 @@ spring security官网：https://docs.spring.io/spring-security/site/docs/5.0.7.B
  
  ### 基于 Spring Security OAuth2 的单点登录系统
  	https://github.com/janlle/sso-service
+	https://www.cnblogs.com/cjsblog/p/9296361.html
